@@ -1,0 +1,129 @@
+<svg width="1600" height="700" viewBox="0 0 1600 700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0002"/>
+      <stop offset="55%" stop-color="#050001"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </linearGradient>
+    <radialGradient id="glowRed" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#5a0009" stop-opacity="0.55"/>
+      <stop offset="45%" stop-color="#2a0006" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="silhouette" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1c0304"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </linearGradient>
+    <linearGradient id="carBody" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#150102"/>
+      <stop offset="100%" stop-color="#3a0007"/>
+    </linearGradient>
+    <linearGradient id="floorFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="700" fill="url(#bgGrad)"/>
+  <rect width="1600" height="700" fill="url(#glowRed)"/>
+
+  <!-- grid floor -->
+  <g stroke="#4a0008" stroke-width="1" opacity="0.35">
+    <line x1="0" y1="560" x2="1600" y2="560"/>
+    <line x1="0" y1="600" x2="1600" y2="600"/>
+    <line x1="0" y1="640" x2="1600" y2="640"/>
+    <line x1="0" y1="680" x2="1600" y2="680"/>
+    <line x1="200" y1="560" x2="60" y2="700"/>
+    <line x1="400" y1="560" x2="320" y2="700"/>
+    <line x1="600" y1="560" x2="580" y2="700"/>
+    <line x1="800" y1="560" x2="800" y2="700"/>
+    <line x1="1000" y1="560" x2="1020" y2="700"/>
+    <line x1="1200" y1="560" x2="1280" y2="700"/>
+    <line x1="1400" y1="560" x2="1540" y2="700"/>
+  </g>
+
+  <!-- scanline particles -->
+  <g fill="#c40018" opacity="0.5">
+    <circle cx="140" cy="120" r="2"/>
+    <circle cx="260" cy="90" r="1.5"/>
+    <circle cx="980" cy="70" r="2"/>
+    <circle cx="1120" cy="140" r="1.5"/>
+    <circle cx="1380" cy="100" r="2"/>
+    <circle cx="700" cy="60" r="1.5"/>
+  </g>
+
+  <!-- ============ LEFT: voxel block-builder character ============ -->
+  <g transform="translate(120,300)">
+    <!-- pickaxe tool -->
+    <g transform="rotate(-25 40 40)">
+      <rect x="30" y="-40" width="10" height="120" fill="#2b2b2b"/>
+      <path d="M0 -40 L80 -40 L70 -60 L10 -60 Z" fill="#6b6b6b"/>
+    </g>
+    <!-- legs -->
+    <rect x="10" y="230" width="34" height="90" fill="url(#silhouette)"/>
+    <rect x="56" y="230" width="34" height="90" fill="url(#silhouette)"/>
+    <!-- torso (blocky) -->
+    <rect x="0" y="110" width="100" height="130" fill="url(#silhouette)" stroke="#3a0007" stroke-width="2"/>
+    <!-- arms -->
+    <rect x="-34" y="120" width="30" height="100" fill="url(#silhouette)"/>
+    <rect x="104" y="120" width="30" height="100" fill="url(#silhouette)"/>
+    <!-- head (cube) -->
+    <rect x="18" y="0" width="64" height="64" fill="url(#silhouette)" stroke="#c40018" stroke-width="2"/>
+    <!-- visor glow -->
+    <rect x="30" y="24" width="40" height="10" fill="#e2001f" opacity="0.85"/>
+  </g>
+
+  <!-- ============ CENTER: crosshair / tactical HUD ============ -->
+  <g transform="translate(800,230)" opacity="0.9">
+    <circle cx="0" cy="0" r="90" fill="none" stroke="#c40018" stroke-width="2" opacity="0.55"/>
+    <circle cx="0" cy="0" r="60" fill="none" stroke="#c40018" stroke-width="1.5" opacity="0.4"/>
+    <line x1="-120" y1="0" x2="-95" y2="0" stroke="#c40018" stroke-width="3"/>
+    <line x1="120" y1="0" x2="95" y2="0" stroke="#c40018" stroke-width="3"/>
+    <line x1="0" y1="-120" x2="0" y2="-95" stroke="#c40018" stroke-width="3"/>
+    <line x1="0" y1="120" x2="0" y2="95" stroke="#c40018" stroke-width="3"/>
+    <circle cx="0" cy="0" r="4" fill="#e2001f"/>
+  </g>
+
+  <!-- tactical operator silhouette behind crosshair -->
+  <g transform="translate(700,260)" opacity="0.9">
+    <!-- helmet -->
+    <ellipse cx="90" cy="30" rx="34" ry="32" fill="url(#silhouette)" stroke="#3a0007" stroke-width="2"/>
+    <path d="M60 20 Q90 -10 120 20 L120 34 Q90 22 60 34 Z" fill="#000000"/>
+    <!-- body -->
+    <path d="M50 60 L130 60 L142 220 L38 220 Z" fill="url(#silhouette)" stroke="#3a0007" stroke-width="2"/>
+    <!-- vest straps -->
+    <line x1="70" y1="65" x2="70" y2="200" stroke="#c40018" stroke-width="3" opacity="0.5"/>
+    <line x1="110" y1="65" x2="110" y2="200" stroke="#c40018" stroke-width="3" opacity="0.5"/>
+    <!-- rifle -->
+    <rect x="130" y="90" width="120" height="14" fill="#111111" stroke="#c40018" stroke-width="1" opacity="0.9"/>
+    <rect x="230" y="80" width="20" height="34" fill="#111111"/>
+    <rect x="150" y="104" width="10" height="30" fill="#111111"/>
+  </g>
+
+  <!-- ============ RIGHT: muscle car silhouette with speed lines ============ -->
+  <g transform="translate(1160,340)">
+    <!-- speed lines -->
+    <g stroke="#c40018" stroke-width="4" opacity="0.5">
+      <line x1="-140" y1="30" x2="-40" y2="30"/>
+      <line x1="-160" y1="55" x2="-50" y2="55"/>
+      <line x1="-130" y1="80" x2="-30" y2="80"/>
+    </g>
+    <!-- car body -->
+    <path d="M0 90 L20 55 L70 40 L190 40 L230 60 L300 65 L310 90 L300 100 L280 100 L270 88 L60 88 L45 100 L20 100 L10 90 Z"
+          fill="url(#carBody)" stroke="#c40018" stroke-width="2"/>
+    <!-- windshield -->
+    <path d="M85 55 L135 44 L180 44 L195 58 Z" fill="#1a0002" stroke="#c40018" stroke-width="1.5" opacity="0.8"/>
+    <!-- wheels -->
+    <circle cx="70" cy="100" r="20" fill="#050001" stroke="#c40018" stroke-width="2"/>
+    <circle cx="70" cy="100" r="7" fill="#c40018" opacity="0.6"/>
+    <circle cx="265" cy="100" r="20" fill="#050001" stroke="#c40018" stroke-width="2"/>
+    <circle cx="265" cy="100" r="7" fill="#c40018" opacity="0.6"/>
+    <!-- headlight glow -->
+    <circle cx="305" cy="80" r="5" fill="#ff2a3d"/>
+    <!-- racing stripe -->
+    <rect x="30" y="60" width="220" height="6" fill="#e2001f" opacity="0.7" transform="rotate(-3 140 63)"/>
+  </g>
+
+  <!-- vignette bottom fade so UI stays readable -->
+  <rect x="0" y="500" width="1600" height="200" fill="url(#floorFade)"/>
+</svg>
