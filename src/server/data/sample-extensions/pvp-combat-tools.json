@@ -1,0 +1,26 @@
+{
+  "name": "PvP & Combat Tools",
+  "description": "One-click install of the standard combat-balance and PvP-arena plugins.",
+  "appliesTo": "minecraft",
+  "sections": [
+    {
+      "title": "Combat Plugins",
+      "type": "download_install",
+      "targetDir": "plugins",
+      "items": [
+        { "name": "CombatLogX", "modrinthProject": "combatlogx" },
+        { "name": "WorldGuard", "modrinthProject": "worldguard" }
+      ]
+    },
+    {
+      "title": "PvP Zone Controls",
+      "type": "rcon_buttons",
+      "buttons": [
+        { "label": "Enable Friendly Fire", "commandTemplate": "gamerule pvp true" },
+        { "label": "Disable Friendly Fire", "commandTemplate": "gamerule pvp false" },
+        { "label": "Enable Keep Inventory", "commandTemplate": "gamerule keepInventory true" },
+        { "label": "Disable Keep Inventory", "commandTemplate": "gamerule keepInventory false" }
+      ]
+    }
+  ]
+}

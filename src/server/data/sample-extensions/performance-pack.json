@@ -1,0 +1,22 @@
+{
+  "name": "Performance Pack",
+  "description": "One-click install of plugins that reduce lag and improve TPS on busy servers.",
+  "appliesTo": "minecraft",
+  "sections": [
+    {
+      "title": "Optimization Plugins",
+      "type": "download_install",
+      "targetDir": "plugins",
+      "items": [
+        { "name": "ClearLag", "modrinthProject": "clearlag" },
+        { "name": "Chunky", "modrinthProject": "chunky" }
+      ]
+    },
+    {
+      "title": "Quick Checks",
+      "type": "rcon_output",
+      "command": "tps",
+      "refreshSeconds": 10
+    }
+  ]
+}

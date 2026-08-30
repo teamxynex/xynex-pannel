@@ -1,0 +1,17 @@
+{
+  "name": "Building Tools",
+  "description": "One-click install of the standard world-editing and land-protection plugins.",
+  "appliesTo": "minecraft",
+  "sections": [
+    {
+      "title": "World Editing & Protection",
+      "type": "download_install",
+      "targetDir": "plugins",
+      "items": [
+        { "name": "WorldEdit", "modrinthProject": "worldedit" },
+        { "name": "WorldGuard", "modrinthProject": "worldguard" },
+        { "name": "Multiverse-Core", "modrinthProject": "multiverse-core" }
+      ]
+    }
+  ]
+}

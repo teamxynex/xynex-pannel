@@ -1,0 +1,17 @@
+{
+  "name": "Anti-Grief Pack",
+  "description": "One-click install of block-logging and protection plugins to catch and roll back griefing.",
+  "appliesTo": "minecraft",
+  "sections": [
+    {
+      "title": "Protection Plugins",
+      "type": "download_install",
+      "targetDir": "plugins",
+      "items": [
+        { "name": "CoreProtect", "modrinthProject": "coreprotect" },
+        { "name": "WorldGuard", "modrinthProject": "worldguard" },
+        { "name": "LuckPerms", "modrinthProject": "luckperms" }
+      ]
+    }
+  ]
+}

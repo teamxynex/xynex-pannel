@@ -1,0 +1,249 @@
+.tutorial-overlay-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(ellipse at 50% 30%, rgba(10, 20, 60, 0.6), rgba(0, 0, 0, 0.9) 65%);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* subtle animated blue scan glow across the whole overlay */
+.tutorial-overlay-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(37, 99, 235, 0.1) 45%, transparent 60%);
+  animation: scanSweep 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes scanSweep {
+  0%, 100% { transform: translateX(-20%); }
+  50% { transform: translateX(20%); }
+}
+
+/* ============ Title ============ */
+.tutorial-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 10000;
+  letter-spacing: 3px;
+  color: #060a18;
+  -webkit-text-stroke: 1.5px #2563eb;
+  text-shadow:
+    0 0 2px #000,
+    0 2px 0 #000,
+    0 4px 12px rgba(37, 99, 235, 0.65),
+    0 0 30px rgba(37, 99, 235, 0.4);
+}
+
+.tutorial-title::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  color: transparent;
+  background: linear-gradient(180deg, #7db4ff 0%, #2563eb 45%, #071a4a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-stroke: 0px transparent;
+  clip-path: polygon(0 0, 100% 0, 100% 42%, 0 42%);
+  z-index: 1;
+}
+
+/* ============ Modal ============ */
+.tutorial-modal {
+  background: linear-gradient(155deg, #0a1230 0%, #060b1e 60%, #030614 100%);
+  padding: 2.75rem 2.5rem 2.25rem;
+  border-radius: 20px;
+  box-shadow:
+    0 30px 70px -15px rgba(0, 0, 0, 0.85),
+    0 0 0 1px rgba(37, 99, 235, 0.35),
+    0 0 40px -8px rgba(37, 99, 235, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(59, 130, 246, 0.28);
+  max-width: 460px;
+  text-align: center;
+  margin-bottom: 44px;
+  position: relative;
+  z-index: 10000;
+}
+
+.tutorial-modal-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: #7db4ff;
+  background: rgba(37, 99, 235, 0.14);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  border-radius: 9999px;
+  padding: 0.3rem 0.9rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.tutorial-modal-heading {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+.tutorial-modal-text {
+  color: #c9d3ea;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 1.75rem;
+  min-height: 60px;
+}
+
+/* Arrow pointing down from modal to wallpaper */
+.tutorial-modal::after {
+  content: '';
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 22px 22px 0;
+  border-style: solid;
+  border-color: #030614 transparent transparent transparent;
+  display: block;
+  width: 0;
+  filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.4));
+}
+
+.tutorial-progress {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 1.75rem;
+}
+
+.tutorial-progress-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+}
+
+.tutorial-progress-dot.active {
+  width: 22px;
+  background: linear-gradient(90deg, #4f8cff, #2563eb);
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.7);
+}
+
+.tutorial-progress-dot.done {
+  background: #1e40af;
+}
+
+.tutorial-btn {
+  background: linear-gradient(135deg, #3b82f6, #1e40af);
+  color: #ffffff;
+  font-weight: 800;
+  padding: 0.8rem 2.75rem;
+  border-radius: 9999px;
+  box-shadow: 0 10px 25px -8px rgba(37, 99, 235, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.875rem;
+}
+
+.tutorial-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px -8px rgba(37, 99, 235, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  background: linear-gradient(135deg, #5b9dff, #2563eb);
+}
+
+.tutorial-btn:active {
+  transform: translateY(0);
+}
+
+/* ============ Wallpaper ============ */
+.tutorial-cartoon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(900px, 90vw);
+  padding: 0;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10000;
+}
+
+.tutorial-wallpaper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  border-radius: 18px;
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  box-shadow:
+    0 25px 50px -15px rgba(0, 0, 0, 0.8),
+    0 0 45px -10px rgba(37, 99, 235, 0.5),
+    inset 0 0 60px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+.tutorial-wallpaper-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, 0.08) 50%, transparent 60%);
+  animation: wallpaperShine 4.5s ease-in-out infinite;
+}
+
+@keyframes wallpaperShine {
+  0%, 100% { transform: translateX(-60%); }
+  50% { transform: translateX(60%); }
+}
+
+/* ============ Highlighter ============ */
+.tutorial-highlighter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 3px solid #4f8cff;
+  border-radius: 8px;
+  pointer-events: none;
+  z-index: 10001;
+  box-shadow: 0 0 18px rgba(79, 140, 255, 0.65);
+}
+
+.tutorial-arrow {
+  position: absolute;
+  top: 50%;
+  right: -50px;
+  transform: translateY(-50%);
+  width: 0; 
+  height: 0; 
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent; 
+  border-right: 20px solid #4f8cff; 
+  animation: bounceRight 1s infinite alternate;
+}
+
+@keyframes bounceRight {
+  from { transform: translateY(-50%) translateX(10px); }
+  to { transform: translateY(-50%) translateX(0); }
+}

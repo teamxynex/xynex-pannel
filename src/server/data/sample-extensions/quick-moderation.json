@@ -1,0 +1,25 @@
+{
+  "name": "Quick Moderation",
+  "description": "See who's online and take common moderation actions without opening the console.",
+  "appliesTo": "minecraft",
+  "sections": [
+    {
+      "title": "Online Players",
+      "type": "rcon_output",
+      "command": "list",
+      "refreshSeconds": 10
+    },
+    {
+      "title": "Player Actions",
+      "type": "rcon_buttons",
+      "buttons": [
+        { "label": "Kick Player", "commandTemplate": "kick {input}", "inputPlaceholder": "username" },
+        { "label": "Ban Player", "commandTemplate": "ban {input}", "inputPlaceholder": "username" },
+        { "label": "Pardon (Unban)", "commandTemplate": "pardon {input}", "inputPlaceholder": "username" },
+        { "label": "Op Player", "commandTemplate": "op {input}", "inputPlaceholder": "username" },
+        { "label": "Deop Player", "commandTemplate": "deop {input}", "inputPlaceholder": "username" },
+        { "label": "Mute (via Essentials)", "commandTemplate": "mute {input}", "inputPlaceholder": "username" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Backup Manager",
+  "description": "Trigger a world save and backup on demand, no need to remember the console command.",
+  "appliesTo": "minecraft",
+  "sections": [
+    {
+      "title": "World Backup",
+      "type": "rcon_buttons",
+      "buttons": [
+        { "label": "Disable Auto-Save", "commandTemplate": "save-off" },
+        { "label": "Save World Now", "commandTemplate": "save-all flush" },
+        { "label": "Re-enable Auto-Save", "commandTemplate": "save-on" }
+      ]
+    }
+  ]
+}

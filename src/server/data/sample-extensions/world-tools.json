@@ -1,0 +1,36 @@
+{
+  "name": "World Tools",
+  "description": "One-click controls for weather, time, difficulty, and game mode — no commands to remember.",
+  "appliesTo": "minecraft",
+  "sections": [
+    {
+      "title": "Weather & Time",
+      "type": "rcon_buttons",
+      "buttons": [
+        { "label": "Clear Weather", "commandTemplate": "weather clear" },
+        { "label": "Make it Rain", "commandTemplate": "weather rain" },
+        { "label": "Set Day", "commandTemplate": "time set day" },
+        { "label": "Set Night", "commandTemplate": "time set night" }
+      ]
+    },
+    {
+      "title": "Difficulty & Game Mode",
+      "type": "rcon_buttons",
+      "buttons": [
+        { "label": "Peaceful", "commandTemplate": "difficulty peaceful" },
+        { "label": "Easy", "commandTemplate": "difficulty easy" },
+        { "label": "Normal", "commandTemplate": "difficulty normal" },
+        { "label": "Hard", "commandTemplate": "difficulty hard" },
+        { "label": "Set Survival", "commandTemplate": "defaultgamemode survival" },
+        { "label": "Set Creative", "commandTemplate": "defaultgamemode creative" }
+      ]
+    },
+    {
+      "title": "World Save",
+      "type": "rcon_buttons",
+      "buttons": [
+        { "label": "Save World Now", "commandTemplate": "save-all" }
+      ]
+    }
+  ]
+}
