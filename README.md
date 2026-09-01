@@ -1,6 +1,6 @@
 # XyneX Panel
 
-Made by Jishnu
+Made by TeamXyneX
 
 ## Quick Automated Setup (Recommended)
 
