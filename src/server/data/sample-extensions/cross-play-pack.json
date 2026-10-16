@@ -1,0 +1,17 @@
+{
+  "name": "Cross-Play Pack",
+  "description": "Let Bedrock (mobile/console) players join your Java server, and support players on older/newer Java versions.",
+  "appliesTo": "minecraft",
+  "sections": [
+    {
+      "title": "Bedrock & Version Support",
+      "type": "download_install",
+      "targetDir": "plugins",
+      "items": [
+        { "name": "Geyser", "modrinthProject": "geyser" },
+        { "name": "Floodgate", "modrinthProject": "floodgate" },
+        { "name": "ViaVersion", "modrinthProject": "viaversion" }
+      ]
+    }
+  ]
+}

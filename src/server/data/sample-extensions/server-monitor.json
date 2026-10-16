@@ -1,0 +1,19 @@
+{
+  "name": "Server Monitor",
+  "description": "Live-ish view of server performance (TPS) and who's connected.",
+  "appliesTo": "minecraft",
+  "sections": [
+    {
+      "title": "TPS (Ticks Per Second)",
+      "type": "rcon_output",
+      "command": "tps",
+      "refreshSeconds": 10
+    },
+    {
+      "title": "Online Players",
+      "type": "rcon_output",
+      "command": "list",
+      "refreshSeconds": 10
+    }
+  ]
+}

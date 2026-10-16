@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700&display=swap');
+
+/* Neon sci-fi skin for the Servers tab — follows the panel accent theme (--theme-*).
+   Colours come from the admin-selected theme; no hardcoded accent. */
+.sv-root {
+  --sv-a: var(--theme-400);
+  --sv-a2: var(--theme-600);
+  --sv-line: rgba(var(--theme-rgb-500), 0.28);
+  --sv-line-soft: rgba(var(--theme-rgb-500), 0.12);
+  --sv-panel: color-mix(in srgb, var(--bg-card) 78%, var(--theme-950));
+  --sv-cut: 22px;
+  position: relative;
+  min-height: 100%;
+  color: var(--text-foreground);
+  background:
+    radial-gradient(900px 420px at 50% -80px, rgba(var(--theme-rgb-500), 0.10), transparent 70%),
+    linear-gradient(rgba(var(--theme-rgb-500), 0.035) 1px, transparent 1px) 0 0 / 44px 44px,
+    linear-gradient(90deg, rgba(var(--theme-rgb-500), 0.035) 1px, transparent 1px) 0 0 / 44px 44px,
+    var(--bg-background);
+}
+.sv-display { font-family: 'Exo 2', 'Inter', ui-sans-serif, system-ui, sans-serif; }
+
+/* ── Chamfered frame: outer = border colour, inner = surface ───────────── */
+.sv-frame {
+  position: relative;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--sv-a) 0%, var(--sv-line) 22%, var(--sv-line-soft) 60%, var(--sv-line) 100%);
+  clip-path: polygon(var(--sv-cut) 0, calc(100% - var(--sv-cut)) 0, 100% var(--sv-cut), 100% calc(100% - var(--sv-cut)), calc(100% - var(--sv-cut)) 100%, var(--sv-cut) 100%, 0 calc(100% - var(--sv-cut)), 0 var(--sv-cut));
+  filter: drop-shadow(0 0 18px rgba(var(--theme-rgb-500), 0.10));
+}
+.sv-frame-in {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background: var(--sv-panel);
+  clip-path: polygon(var(--sv-cut) 0, calc(100% - var(--sv-cut)) 0, 100% var(--sv-cut), 100% calc(100% - var(--sv-cut)), calc(100% - var(--sv-cut)) 100%, var(--sv-cut) 100%, 0 calc(100% - var(--sv-cut)), 0 var(--sv-cut));
+}
+.sv-frame.is-off { filter: none; opacity: .72; }
+.sv-frame.is-off { background: linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.06)); }
+.sv-frame.is-sus { background: linear-gradient(135deg, rgba(248,113,113,.6), rgba(248,113,113,.12)); filter: none; opacity: .8; }
+
+/* bright corner brackets, like the mockup */
+.sv-corner { position: absolute; width: 26px; height: 26px; pointer-events: none; z-index: 5; border: 0 solid var(--sv-a); filter: drop-shadow(0 0 6px var(--sv-a)); }
+.sv-corner.tl { top: 0; left: 0;  border-top-width: 2px; border-left-width: 2px; }
+.sv-corner.tr { top: 0; right: 0; border-top-width: 2px; border-right-width: 2px; }
+.sv-corner.bl { bottom: 0; left: 0;  border-bottom-width: 2px; border-left-width: 2px; }
+.sv-corner.br { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
+
+/* ── Buttons ───────────────────────────────────────────────────────────── */
+.sv-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 42px; padding: 0 18px; border-radius: 12px;
+  font-weight: 600; font-size: 14px; color: var(--text-foreground); white-space: nowrap;
+  border: 1px solid var(--sv-line);
+  background: rgba(var(--theme-rgb-500), 0.06);
+  transition: background .2s, border-color .2s, box-shadow .2s, transform .15s;
+}
+.sv-btn:hover { background: rgba(var(--theme-rgb-500), 0.14); border-color: var(--sv-a); box-shadow: 0 0 18px -2px rgba(var(--theme-rgb-500), .45); }
+.sv-btn:active { transform: scale(.97); }
+.sv-btn:focus-visible { outline: 2px solid var(--sv-a); outline-offset: 2px; }
+.sv-btn.primary {
+  color: var(--theme-950); border-color: transparent;
+  background: linear-gradient(180deg, var(--theme-300), var(--sv-a2));
+  box-shadow: 0 0 22px -4px rgba(var(--theme-rgb-500), .6), inset 0 1px 0 rgba(255,255,255,.5);
+}
+.sv-btn.primary:hover { background: linear-gradient(180deg, var(--theme-200), var(--sv-a)); }
+.sv-btn.disabled { opacity: .45; pointer-events: none; }
+
+/* ── Icon tile ─────────────────────────────────────────────────────────── */
+.sv-tile {
+  display: grid; place-items: center; flex-shrink: 0;
+  color: var(--sv-a);
+  background: linear-gradient(160deg, rgba(var(--theme-rgb-500), .16), rgba(var(--theme-rgb-500), .04));
+  border: 1px solid var(--sv-line);
+  box-shadow: inset 0 0 14px rgba(var(--theme-rgb-500), .10), 0 0 16px -4px rgba(var(--theme-rgb-500), .35);
+}
+
+/* ── Status pill ───────────────────────────────────────────────────────── */
+.sv-pill {
+  display: inline-flex; align-items: center; gap: 8px; height: 28px; padding: 0 14px;
+  border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: .08em;
+  color: var(--sv-a); background: rgba(var(--theme-rgb-500), .08); border: 1px solid var(--sv-line);
+}
+.sv-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sv-a); box-shadow: 0 0 10px var(--sv-a); }
+.sv-pill.off { color: var(--text-muted-foreground); background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.14); }
+.sv-pill.off .dot { background: #6b7f79; box-shadow: none; }
+.sv-pill.sus { color: #fca5a5; background: rgba(248,113,113,.08); border-color: rgba(248,113,113,.35); }
+.sv-pill.sus .dot { background: #f87171; box-shadow: 0 0 10px #f87171; }
+@media (prefers-reduced-motion: no-preference) {
+  .sv-pill:not(.off):not(.sus) .dot { animation: sv-pulse 2s ease-in-out infinite; }
+}
+@keyframes sv-pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+
+/* ── Metrics strip ─────────────────────────────────────────────────────── */
+.sv-metrics {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--sv-line-soft); border-radius: 16px;
+  background: rgba(var(--theme-rgb-500), .035);
+  box-shadow: inset 0 0 24px rgba(var(--theme-rgb-500), .04);
+}
+.sv-metric { padding: 14px 16px 12px; min-width: 0; }
+.sv-metric + .sv-metric { border-left: 1px solid var(--sv-line-soft); }
+.sv-metric-label { font-size: 11px; letter-spacing: .1em; color: var(--text-muted-foreground); font-weight: 600; }
+.sv-metric-value { margin-top: 2px; font-size: 18px; font-weight: 700; color: var(--text-foreground); white-space: nowrap; }
+.sv-metric-value small { font-size: 13px; font-weight: 500; color: var(--text-muted-foreground); }
+.sv-bar { margin-top: 10px; height: 4px; border-radius: 4px; background: rgba(var(--theme-rgb-500), .12); overflow: hidden; }
+.sv-bar > i { display: block; height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--sv-a2), var(--sv-a)); box-shadow: 0 0 10px var(--sv-a); transition: width .8s cubic-bezier(.22,1,.36,1); }
+.sv-bar > i.warn { background: linear-gradient(90deg, #f59e0b, #fbbf24); box-shadow: 0 0 10px #fbbf24; }
+.sv-bar > i.hot  { background: linear-gradient(90deg, #ef4444, #f87171); box-shadow: 0 0 10px #f87171; }
+
+/* ── Footer row ────────────────────────────────────────────────────────── */
+.sv-foot {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  border: 1px solid var(--sv-line-soft); border-radius: 16px; padding: 10px 12px;
+  background: rgba(var(--theme-rgb-500), .03);
+}
+
+/* ── Card art fade ─────────────────────────────────────────────────────── */
+.sv-art { position: absolute; inset: 0 0 auto 0; height: 190px; pointer-events: none; opacity: .95;
+  -webkit-mask-image: linear-gradient(90deg, transparent 20%, #000 75%), linear-gradient(180deg, #000 55%, transparent);
+  -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent 20%, #000 75%), linear-gradient(180deg, #000 55%, transparent); mask-composite: intersect; }
+.sv-art img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.7) brightness(.8); mix-blend-mode: screen; }
+.sv-hero-art { position: absolute; inset: 0; pointer-events: none; opacity: .9;
+  -webkit-mask-image: linear-gradient(90deg, transparent 8%, #000 40%, #000 70%, transparent 95%); mask-image: linear-gradient(90deg, transparent 8%, #000 40%, #000 70%, transparent 95%); }
+
+.sv-card-link:focus-visible .sv-frame-in { outline: 2px solid var(--sv-a); outline-offset: -3px; }

@@ -1,0 +1,17 @@
+{
+  "name": "Essentials Suite",
+  "description": "One-click install of the most common core plugins: EssentialsX, Vault, and LuckPerms.",
+  "appliesTo": "minecraft",
+  "sections": [
+    {
+      "title": "Core Plugins",
+      "type": "download_install",
+      "targetDir": "plugins",
+      "items": [
+        { "name": "EssentialsX", "modrinthProject": "essentialsx" },
+        { "name": "Vault", "modrinthProject": "vault" },
+        { "name": "LuckPerms", "modrinthProject": "luckperms" }
+      ]
+    }
+  ]
+}

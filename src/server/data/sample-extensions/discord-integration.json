@@ -1,0 +1,15 @@
+{
+  "name": "Discord Integration",
+  "description": "Bridge in-game chat with a Discord server, and get join/leave events posted automatically.",
+  "appliesTo": "minecraft",
+  "sections": [
+    {
+      "title": "Discord Bridge Plugins",
+      "type": "download_install",
+      "targetDir": "plugins",
+      "items": [
+        { "name": "DiscordSRV", "modrinthProject": "discordsrv" }
+      ]
+    }
+  ]
+}

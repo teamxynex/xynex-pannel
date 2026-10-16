@@ -1,0 +1,24 @@
+{
+  "name": "Whitelist Manager",
+  "description": "Turn whitelisting on/off and manage who's allowed to join.",
+  "appliesTo": "minecraft",
+  "sections": [
+    {
+      "title": "Whitelisted Players",
+      "type": "rcon_output",
+      "command": "whitelist list",
+      "refreshSeconds": 15
+    },
+    {
+      "title": "Manage Whitelist",
+      "type": "rcon_buttons",
+      "buttons": [
+        { "label": "Enable Whitelist", "commandTemplate": "whitelist on" },
+        { "label": "Disable Whitelist", "commandTemplate": "whitelist off" },
+        { "label": "Add Player", "commandTemplate": "whitelist add {input}", "inputPlaceholder": "username" },
+        { "label": "Remove Player", "commandTemplate": "whitelist remove {input}", "inputPlaceholder": "username" },
+        { "label": "Reload List", "commandTemplate": "whitelist reload" }
+      ]
+    }
+  ]
+}

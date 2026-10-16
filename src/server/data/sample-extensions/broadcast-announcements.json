@@ -1,0 +1,23 @@
+{
+  "name": "Broadcast & Announcements",
+  "description": "Send a message or title card to every player currently online.",
+  "appliesTo": "minecraft",
+  "sections": [
+    {
+      "title": "Send to Chat",
+      "type": "rcon_buttons",
+      "buttons": [
+        { "label": "Broadcast Message", "commandTemplate": "say {input}", "inputPlaceholder": "message to send to everyone" },
+        { "label": "Tell Player", "commandTemplate": "tell {input}", "inputPlaceholder": "username message" }
+      ]
+    },
+    {
+      "title": "Send as Title Card",
+      "type": "rcon_buttons",
+      "buttons": [
+        { "label": "Show Title to Everyone", "commandTemplate": "title @a title {\"text\":\"{input}\"}", "inputPlaceholder": "title text" },
+        { "label": "Show Subtitle to Everyone", "commandTemplate": "title @a subtitle {\"text\":\"{input}\"}", "inputPlaceholder": "subtitle text" }
+      ]
+    }
+  ]
+}

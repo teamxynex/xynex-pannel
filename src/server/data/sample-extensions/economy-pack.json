@@ -1,0 +1,26 @@
+{
+  "name": "Economy Pack",
+  "description": "One-click install of a full in-game economy: currency, player shops, and player-to-player trading.",
+  "appliesTo": "minecraft",
+  "sections": [
+    {
+      "title": "Economy Plugins",
+      "type": "download_install",
+      "targetDir": "plugins",
+      "items": [
+        { "name": "Vault", "modrinthProject": "vault" },
+        { "name": "EssentialsX", "modrinthProject": "essentialsx" },
+        { "name": "ChestShop", "modrinthProject": "chestshop" }
+      ]
+    },
+    {
+      "title": "Balance Commands",
+      "type": "rcon_buttons",
+      "buttons": [
+        { "label": "Check Balance", "commandTemplate": "balance {input}", "inputPlaceholder": "username" },
+        { "label": "Pay Player", "commandTemplate": "eco give {input}", "inputPlaceholder": "username amount" },
+        { "label": "Take Money", "commandTemplate": "eco take {input}", "inputPlaceholder": "username amount" }
+      ]
+    }
+  ]
+}

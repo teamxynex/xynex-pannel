@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800&display=swap');
+
+/* ════════════════════════════════════════════════════════════════════════
+   XyneX Neon design system (shared by shell + dashboard)
+   100% theme-driven: every colour comes from --theme-* / --bg-* / --text-*
+   so whichever theme the admin selects re-skins everything automatically.
+   ════════════════════════════════════════════════════════════════════════ */
+:root {
+  --nx-a: var(--theme-400);
+  --nx-a2: var(--theme-600);
+  --nx-line: rgba(var(--theme-rgb-500), 0.30);
+  --nx-line-soft: rgba(var(--theme-rgb-500), 0.13);
+  --nx-panel: color-mix(in srgb, var(--bg-card) 78%, var(--theme-950));
+  --nx-cut: 18px;
+}
+
+.nx-display { font-family: 'Exo 2', 'Inter', ui-sans-serif, system-ui, sans-serif; letter-spacing: .01em; }
+
+/* Page backdrop: faint grid + top glow, drawn behind the app shell */
+.nx-shell-bg {
+  background:
+    radial-gradient(900px 420px at 50% -90px, rgba(var(--theme-rgb-500), 0.11), transparent 70%),
+    linear-gradient(rgba(var(--theme-rgb-500), 0.035) 1px, transparent 1px) 0 0 / 44px 44px,
+    linear-gradient(90deg, rgba(var(--theme-rgb-500), 0.035) 1px, transparent 1px) 0 0 / 44px 44px,
+    var(--bg-background);
+}
+
+/* ── Chamfered frame (outer = border gradient, inner = surface) ───────── */
+.nx-frame {
+  --c: var(--nx-cut);
+  position: relative;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--nx-a) 0%, var(--nx-line) 24%, var(--nx-line-soft) 62%, var(--nx-line) 100%);
+  clip-path: polygon(var(--c) 0, calc(100% - var(--c)) 0, 100% var(--c), 100% calc(100% - var(--c)), calc(100% - var(--c)) 100%, var(--c) 100%, 0 calc(100% - var(--c)), 0 var(--c));
+  filter: drop-shadow(0 0 16px rgba(var(--theme-rgb-500), 0.10));
+}
+.nx-frame-in {
+  --c: var(--nx-cut);
+  position: relative; height: 100%; overflow: hidden;
+  background: var(--nx-panel);
+  clip-path: polygon(var(--c) 0, calc(100% - var(--c)) 0, 100% var(--c), 100% calc(100% - var(--c)), calc(100% - var(--c)) 100%, var(--c) 100%, 0 calc(100% - var(--c)), 0 var(--c));
+}
+.nx-frame.sm { --nx-cut: 10px; }
+.nx-frame.sm .nx-frame-in { --nx-cut: 10px; }
+
+.nx-corner { position: absolute; width: 20px; height: 20px; pointer-events: none; z-index: 5; border: 0 solid var(--nx-a); filter: drop-shadow(0 0 5px var(--nx-a)); }
+.nx-corner.tl { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
+.nx-corner.tr { top: 0; right: 0; border-top-width: 2px; border-right-width: 2px; }
+.nx-corner.bl { bottom: 0; left: 0; border-bottom-width: 2px; border-left-width: 2px; }
+.nx-corner.br { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
+
+/* ── Icon tile ────────────────────────────────────────────────────────── */
+.nx-tile {
+  display: grid; place-items: center; flex-shrink: 0; color: var(--nx-a);
+  background: linear-gradient(160deg, rgba(var(--theme-rgb-500), .18), rgba(var(--theme-rgb-500), .04));
+  border: 1px solid var(--nx-line);
+  box-shadow: inset 0 0 12px rgba(var(--theme-rgb-500), .10), 0 0 14px -4px rgba(var(--theme-rgb-500), .35);
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────── */
+.nx-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 38px; padding: 0 16px; border-radius: 11px; white-space: nowrap;
+  font-weight: 600; font-size: 13.5px; color: var(--text-foreground);
+  border: 1px solid var(--nx-line); background: rgba(var(--theme-rgb-500), .07);
+  transition: background .2s, border-color .2s, box-shadow .2s, transform .15s;
+}
+.nx-btn:hover { background: rgba(var(--theme-rgb-500), .16); border-color: var(--nx-a); box-shadow: 0 0 18px -2px rgba(var(--theme-rgb-500), .5); }
+.nx-btn:active { transform: scale(.97); }
+.nx-btn:focus-visible { outline: 2px solid var(--nx-a); outline-offset: 2px; }
+.nx-btn.primary {
+  color: var(--theme-950); border-color: transparent;
+  background: linear-gradient(180deg, var(--theme-300), var(--nx-a2));
+  box-shadow: 0 0 22px -4px rgba(var(--theme-rgb-500), .65), inset 0 1px 0 rgba(255,255,255,.45);
+}
+.nx-btn.primary:hover { background: linear-gradient(180deg, var(--theme-200), var(--nx-a)); }
+
+/* ── List row ─────────────────────────────────────────────────────────── */
+.nx-row {
+  border: 1px solid var(--nx-line-soft); border-radius: 14px;
+  background: rgba(var(--theme-rgb-500), .035);
+  transition: border-color .2s, background .2s, box-shadow .2s;
+}
+.nx-row:hover { border-color: var(--nx-line); background: rgba(var(--theme-rgb-500), .09); box-shadow: 0 0 18px -8px rgba(var(--theme-rgb-500), .6); }
+
+/* ── Section heading with arrow marker ────────────────────────────────── */
+.nx-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--nx-a); }
+.nx-eyebrow::before { content: ""; width: 0; height: 0; border-style: solid; border-width: 4px 0 4px 6px; border-color: transparent transparent transparent var(--nx-a); }
+
+.nx-glow-text { color: var(--nx-a); text-shadow: 0 0 22px rgba(var(--theme-rgb-500), .5); }
+
+/* ── Shell: sidebar / header / nav ────────────────────────────────────── */
+.nx-side {
+  position: relative; height: 100%; display: flex; flex-direction: column;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bg-card) 88%, var(--theme-950)), color-mix(in srgb, var(--bg-background) 92%, var(--theme-950)));
+  border-right: 1px solid var(--nx-line-soft);
+  backdrop-filter: blur(14px);
+}
+.nx-side::after { /* glowing edge */
+  content: ""; position: absolute; top: 0; right: -1px; width: 1px; height: 100%; pointer-events: none;
+  background: linear-gradient(180deg, transparent, var(--nx-a) 30%, var(--nx-line) 70%, transparent);
+  opacity: .55;
+}
+.nx-head {
+  position: relative;
+  background: color-mix(in srgb, var(--bg-card) 80%, var(--theme-950));
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--nx-line-soft);
+}
+.nx-head::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; pointer-events: none; background: linear-gradient(90deg, transparent, var(--nx-a), transparent); opacity: .45; }
+
+.nx-navitem { position: relative; display: flex; align-items: center; border-radius: 12px; border: 1px solid transparent; transition: background .2s, border-color .2s, box-shadow .2s; }
+.nx-navitem:hover { background: rgba(var(--theme-rgb-500), .08); border-color: var(--nx-line-soft); }
+.nx-navitem.active {
+  background: linear-gradient(90deg, rgba(var(--theme-rgb-500), .22), rgba(var(--theme-rgb-500), .05));
+  border-color: var(--nx-line);
+  box-shadow: 0 0 20px -6px rgba(var(--theme-rgb-500), .6), inset 0 0 14px rgba(var(--theme-rgb-500), .08);
+}
+.nx-navitem.active .nx-ico { color: var(--nx-a); filter: drop-shadow(0 0 6px var(--nx-a)); }
+.nx-navbar { position: absolute; left: -1px; top: 50%; transform: translateY(-50%); width: 3px; height: 60%; border-radius: 0 3px 3px 0; background: var(--nx-a); box-shadow: 0 0 10px var(--nx-a); }
+
+.nx-avatar { background: linear-gradient(135deg, var(--theme-400), var(--theme-700)); box-shadow: 0 0 14px -2px rgba(var(--theme-rgb-500), .6); border: 1px solid var(--nx-line); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .nx-pulse { animation: nx-pulse 2.2s ease-in-out infinite; }
+}
+@keyframes nx-pulse { 0%,100% { opacity: 1; } 50% { opacity: .4; } }
